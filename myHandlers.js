@@ -1,9 +1,12 @@
-function start(){
-return 'Hello, start';
-}
-
-function hello(){
-return 'Hello, hello!';
-}
-
-exports.start = start;
+function start() {
+    console.log('Request handler \'start\'');
+    return 'Hello Start!';
+   }
+   
+   function hello() {
+    console.log('Request handler \'hello\'');
+    return 'Hello Hello!';    
+   }
+   
+   exports.start = start;
+   exports.hello = hello;

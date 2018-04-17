@@ -1,1 +1,2 @@
-global.console.log(typeof console === 'object');
+const myServer = require('./MyServer');
+myServer.start();

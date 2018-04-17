@@ -1,0 +1,1 @@
+global.console.log(typeof console === 'object');

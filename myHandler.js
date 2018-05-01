@@ -1,5 +1,7 @@
-const queryString = require('querystring');
 
+//20180501 
+
+const queryString = require('querystring');
 const myBrain = require('./myBrain');
 const myData = require('./twitterDonKim');
 
@@ -31,13 +33,12 @@ function execute(input) {
     let buffer = ('trump = ' + Math.round(result.trump * 100) + ', kardashian = ' + Math.round(result.kardashian * 100) + '');
     return buffer;
 }
-
 function hello(res, postData) {
     console.log('Request handler \'hello\'');
     let sBody = '<html>' + '<head>' +
         '<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />' +
         '</head>' + '<body>' +
-        'Text : ' + queryString.parse(postData).myName +
+        'Content : ' + queryString.parse(postData).myName +
         '<br>비율 : ' + execute(postData) +
         '</body>' + '</html>';
 

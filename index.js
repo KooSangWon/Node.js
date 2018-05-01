@@ -3,6 +3,7 @@ let sHost = 'localhost';
 const myServer = require('./myServer');
 const myRouter = require('./myRouter');
 const myHandler = require('./myHandler');
+
 let handle = {};
 handle['/'] = myHandler.start;
 handle['/start'] = myHandler.start;

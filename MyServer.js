@@ -1,17 +1,22 @@
 const http = require('http');
 const url = require('url');
-const sHost = 'localhost';
-const nPort = 8000;
 
-function start(route, handle) {
- function onRequest(req, res) {
- console.log('Request received.');
- let sPathname = url.parse(req.url).pathname;
- console.log('Request for ' + sPathname + ' received.');
- route(sPathname, handle, res);
-    }
- http.createServer(onRequest).listen(nPort, sHost);
- console.log('Server running at http://' + sHost + ':' + nPort);
+function start(port, hostname, route, handle) {
+    let sPostData = '';
+    function onReaquest(req, res) {
+        let sPathname = url.parse(req.url).pathname;
+        req.setEncoding('utf8');
+        req.addListener('data', function (dataChunk) {
+            sPostData += dataChunk;
+            console.log('Chunk = ' + dataChunk);
+
+        });
+        req.addListener('end', function() {route(sPathname, handle, res, sPostData)});
+        }
+
+    
+
+    http.createServer(onReaquest).listen(port, hostname);//콜백
+    console.log('Server is running at ' + hostname + port);
 }
-
 exports.start = start;
